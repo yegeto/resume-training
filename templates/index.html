@@ -13,7 +13,7 @@
                         </div>
                         <div class="media-body">
                             <div class="personal_text">
-                                <h6>Hello Everybody, i am</h6>
+                                <h6>Hello Everybody, I am</h6>
                                 <h3>{{ home_banner_name }}</h3>
                                 <h4>{{ home_banner_title }}</h4>
                                 <p>{{ home_banner_description }}</p>
@@ -25,7 +25,7 @@
                                     <li><a href="mailto:info@egeto.com"><i
                                             class="lnr lnr-envelope"></i>info@egeto.com</a>
                                     </li>
-                                    <li><a href="#"><i class="lnr lnr-home"></i> Santa monica bullevard</a></li>
+                                    <li><a href="#"><i class="lnr lnr-home"></i> Santa monica boulevard</a></li>
                                 </ul>
                                 <ul class="list personal_social">
                                     <li><a href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
@@ -126,42 +126,21 @@
                     </div>
                     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                         <ul class="list">
-                            <li>
-                                <span></span>
-                                <div class="media">
-                                    <div class="d-flex">
-                                        <p>March 2017 to present</p>
+                            {% for education in educations %}
+                                <li>
+                                    <span></span>
+                                    <div class="media">
+                                        <div class="d-flex">
+                                            <p>{{ education.start_date|date:"M Y" }} to {{ education.end_date|date:"M Y" }}</p>
+                                        </div>
+                                        <div class="media-body">
+                                            <h4>{{ education.school_name }}</h4>
+                                            <p>{{ education.department }} <br/>{{ education.degree }}</p>
+                                        </div>
                                     </div>
-                                    <div class="media-body">
-                                        <h4>Colorlib</h4>
-                                        <p>Senior Web Developer <br/>Santa monica, Los angeles</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <span></span>
-                                <div class="media">
-                                    <div class="d-flex">
-                                        <p>March 2017 to present</p>
-                                    </div>
-                                    <div class="media-body">
-                                        <h4>Colorlib</h4>
-                                        <p>Senior Web Developer <br/>Santa monica, Los angeles</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <span></span>
-                                <div class="media">
-                                    <div class="d-flex">
-                                        <p>March 2017 to present</p>
-                                    </div>
-                                    <div class="media-body">
-                                        <h4>Colorlib</h4>
-                                        <p>Senior Web Developer <br/>Santa monica, Los angeles</p>
-                                    </div>
-                                </div>
-                            </li>
+                                </li>
+                            {% endfor %}
+
                         </ul>
                     </div>
                 </div>
