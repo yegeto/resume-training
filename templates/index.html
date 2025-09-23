@@ -16,13 +16,14 @@
                                 <h6>Hello Everybody, i am</h6>
                                 <h3>{{ home_banner_name }}</h3>
                                 <h4>{{ home_banner_title }}</h4>
-                                <p>{{  home_banner_description}}</p>
+                                <p>{{ home_banner_description }}</p>
                                 <ul class="list basic_info">
                                     <li><a href="javascript:void(0)"><i class="lnr lnr-calendar-full"></i> 31st
                                         December, 1992</a></li>
                                     <li><a href="tel:+905552345678"><i class="lnr lnr-phone-handset"></i> +90 555 234 56
                                         78</a></li>
-                                    <li><a href="mailto:info@egeto.com"><i class="lnr lnr-envelope"></i>info@egeto.com</a>
+                                    <li><a href="mailto:info@egeto.com"><i
+                                            class="lnr lnr-envelope"></i>info@egeto.com</a>
                                     </li>
                                     <li><a href="#"><i class="lnr lnr-home"></i> Santa monica bullevard</a></li>
                                 </ul>
@@ -56,56 +57,24 @@
                 <div class="col-lg-6">
                     <div class="tools_expert">
                         <div class="skill_main">
-                            <div class="skill_item">
-                                <h4>Python<span class="counter">85</span>%</h4>
-                                <div class="progress_br">
-                                    <div class="progress">
-                                        <div class="progress-bar" role="progressbar" aria-valuenow="85"
-                                             aria-valuemin="0"
-                                             aria-valuemax="100"></div>
+
+                            {% for skill in skills %}
+
+                                <div class="skill_item">
+                                    <h4>{{ skill.name }} <span class="counter">{{ skill.percentage }}</span>%</h4>
+                                    <div class="progress_br">
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar"
+                                                 aria-valuenow="{{ skill.percentage }}"
+                                                 aria-valuemin="0"
+                                                 aria-valuemax="100"></div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="skill_item">
-                                <h4>Photoshop <span class="counter">90</span>%</h4>
-                                <div class="progress_br">
-                                    <div class="progress">
-                                        <div class="progress-bar" role="progressbar" aria-valuenow="90"
-                                             aria-valuemin="0"
-                                             aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="skill_item">
-                                <h4>Illustrator <span class="counter">70</span>%</h4>
-                                <div class="progress_br">
-                                    <div class="progress">
-                                        <div class="progress-bar" role="progressbar" aria-valuenow="70"
-                                             aria-valuemin="0"
-                                             aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="skill_item">
-                                <h4>Sublime <span class="counter">95</span>%</h4>
-                                <div class="progress_br">
-                                    <div class="progress">
-                                        <div class="progress-bar" role="progressbar" aria-valuenow="95"
-                                             aria-valuemin="0"
-                                             aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="skill_item">
-                                <h4>Sketch <span class="counter">75</span>%</h4>
-                                <div class="progress_br">
-                                    <div class="progress">
-                                        <div class="progress-bar" role="progressbar" aria-valuenow="75"
-                                             aria-valuemin="0"
-                                             aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                            </div>
+
+                            {% endfor %}
+
+
                         </div>
                     </div>
                 </div>

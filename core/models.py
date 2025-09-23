@@ -79,4 +79,4 @@ class Skill(AbstractModel):
     class Meta:
         verbose_name = "Skill"
         verbose_name_plural = "Skills"
-        ordering = ("name", "order")
+        ordering = ("order",)
