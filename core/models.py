@@ -1,3 +1,4 @@
+from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 
 
@@ -62,3 +63,20 @@ class ImageSetting(AbstractModel):
         verbose_name = "Image Setting"
         verbose_name_plural = "Image Settings"
 
+
+class Skill(AbstractModel):
+    description = ""
+    order = models.IntegerField(
+        default=0,
+        verbose_name="Order"
+    )
+    percentage = models.IntegerField(
+        default=50,
+        verbose_name="Percentage",
+        validators=[MinValueValidator(50), MaxValueValidator(100)],
+    )
+
+    class Meta:
+        verbose_name = "Skill"
+        verbose_name_plural = "Skills"
+        ordering = ("name", "order")
