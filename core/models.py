@@ -4,20 +4,6 @@ from django.db import models
 
 # Create your models here.
 class AbstractModel(models.Model):
-    name = models.CharField(
-        default="",
-        max_length=254,
-        blank=True,
-        verbose_name="Name",
-        help_text="This is variable of setting",
-    )
-    description = models.CharField(
-        default="",
-        max_length=254,
-        blank=True,
-        verbose_name="Description",
-        help_text="",
-    )
     updated_date = models.DateTimeField(
         blank=True,
         auto_now=True,
@@ -36,7 +22,22 @@ class AbstractModel(models.Model):
         abstract = True
         ordering = ("name",)
 
+
 class GeneralSetting(AbstractModel):
+    name = models.CharField(
+        default="",
+        max_length=254,
+        blank=True,
+        verbose_name="Name",
+        help_text="This is variable of setting",
+    )
+    description = models.CharField(
+        default="",
+        max_length=254,
+        blank=True,
+        verbose_name="Description",
+        help_text="",
+    )
     parameter = models.CharField(
         default="",
         max_length=254,
@@ -51,6 +52,20 @@ class GeneralSetting(AbstractModel):
 
 
 class ImageSetting(AbstractModel):
+    name = models.CharField(
+        default="",
+        max_length=254,
+        blank=True,
+        verbose_name="Name",
+        help_text="This is variable of setting",
+    )
+    description = models.CharField(
+        default="",
+        max_length=254,
+        blank=True,
+        verbose_name="Description",
+        help_text="",
+    )
     file = models.ImageField(
         default="",
         verbose_name="Image",
@@ -65,7 +80,13 @@ class ImageSetting(AbstractModel):
 
 
 class Skill(AbstractModel):
-    description = ""
+    name = models.CharField(
+        default="",
+        max_length=254,
+        blank=True,
+        verbose_name="Name",
+        help_text="This is variable of setting",
+    )
     order = models.IntegerField(
         default=0,
         verbose_name="Order"
@@ -81,9 +102,8 @@ class Skill(AbstractModel):
         verbose_name_plural = "Skills"
         ordering = ("order",)
 
+
 class Experience(AbstractModel):
-    name = ""
-    description = ""
     company_name = models.CharField(
         default="",
         max_length=254,
@@ -120,9 +140,8 @@ class Experience(AbstractModel):
         verbose_name_plural = "Experiences"
         ordering = ("start_date",)
 
+
 class Education(AbstractModel):
-    name = ""
-    description = ""
     school_name = models.CharField(
         default="",
         max_length=254,
@@ -159,9 +178,8 @@ class Education(AbstractModel):
         verbose_name_plural = "Educations"
         ordering = ("-start_date",)
 
+
 class SocialMedia(AbstractModel):
-    name = ""
-    description = ""
     order = models.IntegerField(
         default=0,
         verbose_name="Order"
@@ -185,4 +203,40 @@ class SocialMedia(AbstractModel):
     class Meta:
         verbose_name = "Social Media"
         verbose_name_plural = "Social Media"
+        ordering = ("order",)
+
+
+class Document(AbstractModel):
+    order = models.IntegerField(
+        default=0,
+        verbose_name="Order"
+    )
+    slug = models.SlugField(
+        default="",
+        max_length=254,
+        blank=True,
+        verbose_name="Slug",
+        help_text=""
+    )
+    button_text = models.CharField(
+        default="",
+        max_length=254,
+        blank=True,
+        verbose_name="Button Text",
+        help_text="",
+    )
+    file = models.FileField(
+        default="",
+        upload_to="documents/",
+        verbose_name="File",
+        help_text="",
+        blank=True,
+    )
+
+    def __str__(self):
+        return f"{self._meta.verbose_name}: {self.slug}"
+
+    class Meta:
+        verbose_name = "Document"
+        verbose_name_plural = "Documents"
         ordering = ("order",)
