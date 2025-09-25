@@ -27,10 +27,10 @@ class ContactForm(forms.Form):
             email = self.cleaned_data['email']
             subject = self.cleaned_data['subject']
             message = self.cleaned_data['message']
-            message_context = 'Message received.\n\n' \ 
-                              'Name: %s\n' \ 
-                              'Subject: %s\n' \  
-                              'Email: %s\n' \ 
+            message_context = 'Message received.\n\n' \
+                              'Name: %s\n' \
+                              'Subject: %s\n' \
+                              'Email: %s\n' \
                               'Message: %s' % (name, subject, message, email)
 
             # Send email here
