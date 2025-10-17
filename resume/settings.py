@@ -140,7 +140,7 @@ else:
     AWS_STORAGE_BUCKET_NAME = env('AWS_STORAGE_BUCKET_NAME')
     AWS_S3_REGION_NAME = env('AWS_S3_REGION_NAME')
 
-    DEFAULT_FILE_STORAGE = 'resume.custom_storages.MediaStorage'
+    # DEFAULT_FILE_STORAGE = 'resume.custom_storages.MediaStorage'
     STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
     AWS_DEFAULT_ACL = 'public-read'
