@@ -153,7 +153,8 @@ else:
     AWS_LOCATION = 'static'
     AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
     STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
-    STATIC_ROOT = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+    STATIC_ROOT = None
+    # STATIC_ROOT = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
 
     MEDIA_LOCATION = 'media'
     IMAGE_SETTING_LOCATION = MEDIA_LOCATION + '/image_settings'
