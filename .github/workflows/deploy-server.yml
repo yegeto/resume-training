@@ -25,5 +25,5 @@ jobs:
           password: ${{ secrets.SSH_PASSWORD }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            cd home/resume-training
+            cd /home/resume-training
             docker compose up --build -d

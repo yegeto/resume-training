@@ -1,0 +1,39 @@
+# This workflow will upload statics to AWS S3 on Deploy to Server workflow run
+
+name: Upload Static Track Workflow
+
+on:
+  workflow_run:
+    workflows: [ "Deploy to Server" ]
+    types:
+      - completed
+
+jobs:
+  collectstatic-track-workflow:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # OR "2" -> To retrieve the preceding commit.
+#          since_last_remote_commit: true
+
+      - name: Get changed files in the static folder
+        id: changed-files-specific
+        uses: tj-actions/changed-files@v41
+        with:
+          files: |
+            static/**
+            locale/**
+
+      - name: Upload Static step if any file(s) in the static folder change
+        if: steps.changed-files-specific.outputs.any_changed == 'true'
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          port: 22
+          username: ${{ secrets.SSH_USERNAME }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            cd /home/resume-training
+            docker exec -t app_resume python manage.py collectstatic --noinput
