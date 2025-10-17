@@ -123,7 +123,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATICFILES_DIRS = [
-    BASE_DIR / 'static',
+    BASE_DIR / 'static'
 ]
 
 if DEBUG:
@@ -153,7 +153,7 @@ else:
     AWS_LOCATION = 'static'
     AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
     STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
-    STATIC_ROOT = STATIC_URL
+    STATIC_ROOT = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
 
     MEDIA_LOCATION = 'media'
     IMAGE_SETTING_LOCATION = MEDIA_LOCATION + '/image_settings'
